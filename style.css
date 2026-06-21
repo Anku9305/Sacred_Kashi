@@ -258,7 +258,7 @@ h1, h2, h3, h4 {
 }
 
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
 .hero-overlay {
   position: absolute; inset: 0;
   background:
@@ -410,7 +410,7 @@ h1, h2, h3, h4 {
 }
 
 .ritual-img { aspect-ratio: 4/3; overflow: hidden; }
-.ritual-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms ease; }
+.ritual-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 600ms ease; }
 .ritual-card:hover .ritual-img img { transform: scale(1.08); }
 
 .ritual-body { padding: 22px 22px 26px; }
@@ -448,7 +448,7 @@ h1, h2, h3, h4 {
   align-items: center;
 }
 .about-media { position: relative; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); }
-.about-media img { aspect-ratio: 3/4; object-fit: cover; }
+.about-media img { aspect-ratio: 3/4; object-fit: cover; object-position: top center; }
 .about-media-badge {
   position: absolute;
   bottom: 20px; left: 20px;
@@ -509,7 +509,7 @@ h1, h2, h3, h4 {
   gap: 16px;
 }
 .gallery-item { border-radius: var(--radius-md); overflow: hidden; }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms ease, filter 600ms ease; filter: saturate(0.92); }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 600ms ease, filter 600ms ease; filter: saturate(0.92); }
 .gallery-item:hover img { transform: scale(1.06); filter: saturate(1.1); }
 .gallery-item.span-2 { grid-column: span 2; }
 
@@ -764,4 +764,10 @@ h1, h2, h3, h4 {
   .back-to-top { width: 42px; height: 42px; bottom: 20px; right: 82px; }
   .trust-inner { justify-content: flex-start; }
   .trust-item { min-width: 45%; text-align: left; }
+
+  /* On mobile, cards are full-width and taller relative to screen,
+     so a taller aspect-ratio shows more of each photo (less cropping) */
+  .ritual-img { aspect-ratio: 16/11; }
+  .about-media img { aspect-ratio: 4/3; }
+  .gallery-grid { grid-auto-rows: 200px; }
 }
