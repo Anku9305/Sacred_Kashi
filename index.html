@@ -553,5 +553,148 @@
 </button>
 
 <script src="script.js"></script>
+
+  <!-- 1. POPUP HTML STRUCTURE -->
+<div id="payment-disclaimer-modal" class="modal-overlay">
+    <div class="modal-content">
+        <!-- Professional Warning/Alert Icon -->
+        <div class="modal-icon">⚠️</div>
+        <h2>Important Security Notice</h2>
+        
+        <!-- Content -->
+        <div class="modal-body">
+            <p>
+                Please note that we <strong>do not charge any advance fees</strong> for booking any puja or ritual on our website. 
+            </p>
+            <p>
+                To secure a booking, you only need to select your preferred <strong>Date and Ritual</strong>. No online payment or card details are required during the booking process.
+            </p>
+            <p>
+                All payments are to be made <strong>only after the successful completion of the puja</strong>, either online or offline as per your convenience. We strictly advise against making any advance payments to prevent fraudulent activities.
+            </p>
+        </div>
+
+        <!-- Action Button -->
+        <button id="close-modal-btn" class="modal-btn">I Understand</button>
+    </div>
+</div>
+
+<!-- 2. PROFESSIONAL STYLING (CSS) -->
+<style>
+/* Full screen dark background blur */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Ensures it stays on top of everything */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* When modal is active */
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Actual Popup Box */
+.modal-content {
+    background: #ffffff;
+    width: 90%;
+    max-width: 480px;
+    padding: 35px 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transform: scale(0.8);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-top: 6px solid #e67e22; /* Sacred Kashi Theme Color */
+}
+
+.modal-overlay.show .modal-content {
+    transform: scale(1);
+}
+
+.modal-icon {
+    font-size: 45px;
+    margin-bottom: 12px;
+}
+
+.modal-content h2 {
+    color: #2c3e50;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+.modal-body {
+    text-align: left;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #4a5568;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+}
+
+.modal-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* Professional Corporate Button */
+.modal-btn {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+}
+
+.modal-btn:hover {
+    background: #d35400;
+    transform: translateY(-1px);
+}
+
+.modal-btn:active {
+    transform: translateY(0);
+}
+</style>
+
+<!-- 3. POPUP LOGIC (JAVASCRIPT) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("payment-disclaimer-modal");
+    const closeBtn = document.getElementById("close-modal-btn");
+
+    // Smoothly displays the popup 500ms after the page loads
+    setTimeout(() => {
+        modal.classList.add("show");
+    }, 500);
+
+    // Closes the popup on button click
+    closeBtn.addEventListener("click", function () {
+        modal.classList.remove("show");
+    });
+});
+</script>
 </body>
 </html>
