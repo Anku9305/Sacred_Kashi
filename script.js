@@ -140,4 +140,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-});
+})();
+
+/* ── Slideshow ── */
+(function () {
+  const slides = document.querySelectorAll('.slide');
+  const dotsWrap = document.getElementById('slideDots');
+  if (!slides.length || !dotsWrap) return;
+
+  let current = 0;
+  let timer;
+
+  // build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsWrap.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsWrap.children[current].classList.add('active');
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 3000);
+  }
+
+  document.getElementById('slidePrev')?.addEventListener('click', () => goTo(current - 1));
+  document.getElementById('slideNext')?.addEventListener('click', () => goTo(current + 1));
+
+  resetTimer();
+})();
