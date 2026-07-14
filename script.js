@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 /* ── Slideshow ── */
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   const slides = document.querySelectorAll('.slide');
   const dotsWrap = document.getElementById('slideDots');
   if (!slides.length || !dotsWrap) return;
@@ -178,4 +178,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('slideNext')?.addEventListener('click', () => goTo(current + 1));
 
   resetTimer();
-})();
+});
